@@ -14,7 +14,8 @@ $(document).ready(function(){
             cn = 0;
             $('header').removeClass('bluebg');
             $('.cross-btn2').hide();
-            $('html').css('overflow', 'unset');
+            $('html').css('overflow-y', 'visible');
+            $('html').css('overflow-x', 'hidden');
         }
         $("body").css("overflow", st);
         $(".my-sidenav1").slideToggle("slow");
@@ -23,11 +24,11 @@ $(document).ready(function(){
     $(".my-sidenav").accordion();
 
     $('.new-navopen').hover(function() {
-     var id = $(this).attr('data');
+       var id = $(this).attr('data');
 
-     $(".newnavv").hide();
-     $(".nv"+id).show();
- });
+       $(".newnavv").hide();
+       $(".nv"+id).show();
+   });
 
     $(".nv1").mouseleave(function(){
         $(this).hide();
@@ -61,39 +62,20 @@ $('.cross-btn1').click(function(){
 
 
 $('.panel-collapse').on('shown.bs.collapse', function (e) {
-   var $panel = $(this).closest('.panel');
-   $('html,body').animate({
-     scrollTop: $panel.offset().top-80
- }, 500); 
+ var $panel = $(this).closest('.panel');
+ $('html,body').animate({
+   scrollTop: $panel.offset().top-80
+}, 500); 
 });
 
 $('.accordion-collapse').on('shown.bs.collapse', function (e) {
- var $panel = $(this).closest('.accordion-item');
- $('html,body').animate({
-   scrollTop: $panel.offset().top-80
-}, 1000); 
+   var $panel = $(this).closest('.accordion-item');
+   $('html,body').animate({
+     scrollTop: $panel.offset().top-80
+ }, 1000); 
 
 });
 
-const scrollIndicator = $('#header');
-    const content = $('#content');
-    let lastScrollTop = 0;
-
-    $(window).scroll(function() {
-        const scrollTop = $(this).scrollTop();
-
-        if (scrollTop > lastScrollTop) {
-      // Scrolling down
-          scrollIndicator.hide();
-          content.hide();
-      } else {
-      // Scrolling up
-          scrollIndicator.css('display', 'flex');
-          content.show();
-      }
-
-      lastScrollTop = scrollTop;
-  });
 
      /*
  * Replace all SVG images with inline SVG
@@ -137,36 +119,35 @@ function collectMapSvg() {
 
 
 
-$(window).on("scroll", function() {
-  // Sticky nev Effect
-  if($(this).scrollTop() > 70) {
-   $('#header').addClass("sticky"); 
-} 
-else {
-   $('#header').removeClass("sticky");
-} 
+// $(window).on("scroll", function() {
+//   if($(this).scrollTop() > 70) {
+//    $('#header').addClass("sticky"); 
+// } 
+// else {
+//    $('#header').removeClass("sticky");
+// } 
 
-});
+// });
 
 $(".banner-slider.owl-carousel").owlCarousel({
-   autoplay: false,
-   loop: false,
-   dots:false,   
-   nav: true,
-   navText:"",
-   touchDrag: true,
-   mouseDrag: false,
-   smartSpeed: 2000,
-   animateIn: 'fadeIn',
-  animateOut: 'fadeOut',
-   responsive: {
-     0: {
-       items: 1
-   },
-   600: {
-       items: 1
-   },
-   1000: {
+ autoplay: false,
+ loop: false,
+ dots:false,   
+ nav: true,
+ navText:"",
+ touchDrag: true,
+ mouseDrag: false,
+ smartSpeed: 2000,
+ animateIn: 'fadeIn',
+ animateOut: 'fadeOut',
+ responsive: {
+   0: {
+     items: 1
+ },
+ 600: {
+     items: 1
+ },
+ 1000: {
     items:1
 }
 } 
@@ -174,23 +155,24 @@ $(".banner-slider.owl-carousel").owlCarousel({
 
 
 $(".people-slider.owl-carousel").owlCarousel({
-   autoplay: true,
-   loop:true,
-   dots:true,   
-   nav: false,
-   navText:"",
-   touchDrag: true,
-   mouseDrag: false,
-   smartSpeed: 2000,
-   margin:15,
-   responsive: {
-     0: {
-       items: 1
-   },
-   600: {
-       items: 1
-   },
-   1000: {
+ autoplay: true,
+ loop:true,
+ dots:true,   
+ nav: false,
+ navText:"",
+ touchDrag: true,
+ mouseDrag: false,
+ smartSpeed: 1000,
+ autoplayTimeout:8000, 
+ margin:15,
+ responsive: {
+   0: {
+     items: 1
+ },
+ 600: {
+     items: 1
+ },
+ 1000: {
     items:1
 }
 } 

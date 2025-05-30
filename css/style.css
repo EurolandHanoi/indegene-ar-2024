@@ -66,17 +66,14 @@ p {
 /*-----------Header Css End-------------*/
 
 #header {
-  padding: 30px 0px;
+  padding: 20px 0px;
   display: flex;
   align-items: center;
   margin-bottom: 6px;
   z-index: 999;
   position: fixed;
   width: 100%;
-}
-#header .container{
-  padding: 12px 25px;
-  background-color:#000;
+  background-color: #000;
 }
 .textLogo
 {
@@ -207,7 +204,7 @@ p {
 .my-sidenav1 {
   display: none;
   position: fixed;
-  top: 94px;
+  top: 72px;
   right: 0;
   overflow-y: auto;
   overflow-x: hidden;
@@ -2038,6 +2035,21 @@ h4.gradeBg {
   z-index: 3;
   cursor: ew-resize;
   touch-action: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slider1::before {
+  content: '';
+  background-image: url("../images/Arrow.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .hm-read-btn img
 {
@@ -2170,7 +2182,7 @@ h4.clientCon {
   color: #fff;
 }
 .downloadImg a img {
-  width: 32px;
+  width: 24px;
 }
 
 .clinicalIns.bg_clr1{
@@ -2181,6 +2193,12 @@ h4.clientCon {
 }
 .clinicalIns.bg_clr3 {
   background-color: #eeeff7;
+}
+.desktopImg{
+  display: block;
+}
+.mblImg{
+  display: none;
 }
 @media(max-width: 1366px) {
   .contryIns::after {

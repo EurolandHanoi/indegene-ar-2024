@@ -5,6 +5,15 @@
 
 }
 @media (max-width: 991px) {
+  .insideBanner {
+    padding-top: 85px;
+  }
+  .desktopImg{
+    display: none;
+  }
+  .mblImg{
+    display: block;
+  }
   .container1  {
     touch-action: auto;
   }
@@ -230,92 +239,89 @@
 
 @media (max-width: 767px) {
 
-.banner-left {
+  .banner-left {
     position: absolute;
     left: 15px;
     top: 25%;
-}
-#header
-{
-  padding: 0px;
-}
-.right-menu h6 
-{
-  display: none;
-}
-.ham-icon1
-{
-  display: block;
-}
-.hm-banner h1 {
+  }
+
+  .right-menu h6 
+  {
+    display: none;
+  }
+  .ham-icon1
+  {
+    display: block;
+  }
+  .hm-banner h1 {
     font-size: 36px;
     line-height: 40px;
   }
-.hm-read-btn {
+  .hm-read-btn {
     margin-bottom: 30px;
-}
-.banner-right
-{
-  right:5px;
-}
-.hm-banner h5
-{
-  margin-bottom: 10px;
-}
-.hm-sec2-mbl
-{
-  display:block;
-}
-.hmsec2 {
+  }
+  .banner-right
+  {
+    right:5px;
+  }
+  .hm-banner h5
+  {
+    margin-bottom: 10px;
+  }
+  .hm-sec2-mbl
+  {
+    display:block;
+  }
+  .hmsec2 {
     background-image:none;
     background-color: #000;
     height: auto;
     display:block;
     align-items: center;
     padding-top: 40px;
-}
-.hmsec3
-{
-  height: auto;
-  display: block;
-  padding: 40px 0px;
-  background-position: right;
-}
-.inde-num-wrap {
+  }
+  .hmsec3
+  {
+    height: auto;
+    display: block;
+    padding: 40px 0px;
+    background-position: right;
+  }
+  .inde-num-wrap {
     margin-left: 0px;
-}
-.inde-num h3 {
+  }
+  .inde-num h3 {
     font-size: 34px;
     line-height: 38px;
   }
-.inde-num:before, .inde-num:after
-{
-display: none;
-}
-.inde-num
-{
-  margin-bottom: 30px;
-}
-.hmkey-sec
-{
-background-image: url(../images/mbl/key-differentiators-img-mob.webp);
-background-position: top;
-display: block;
-padding-top: 40px;
-}
-.hm-chmsg
-{
- background-image: url(../images/mbl/chairman-img-mob.webp);
-display: block;
-padding-top: 40px; 
-}
-.hmp-highlights {
-    background-image: none;
-    height:auto;
+  .inde-num:before, .inde-num:after
+  {
+    display: none;
+  }
+  .inde-num
+  {
+    margin-bottom: 30px;
+  }
+  .hmkey-sec
+  {
+    background-image: url(../images/mbl/key-differentiators-img-mob.webp);
+    background-position: top;
+    display: block;
+    padding-top: 40px;
+  }
+  .hm-chmsg
+  {
+   background-image: url(../images/mbl/chairman-img-mob.webp);
+   display: block;
+   padding-top: 40px; 
+ }
+ .hmp-highlights {
+  background-image: none;
+  height:auto;
 }
 .hilight-num-wrap {
-    overflow: visible;
-    height: auto;
+  overflow: visible;
+  height: auto;
 }
 .hm-people
 {
@@ -333,13 +339,13 @@ padding-top: 40px;
   padding-bottom: 4px;
 }
 .hilight-num h2 {
-    font-size: 36px;
-    line-height: 36px;
-  }
-    .hilight-num h3 {
-        font-size: 24px;
-        line-height: 24px;
-    }
+  font-size: 36px;
+  line-height: 36px;
+}
+.hilight-num h3 {
+  font-size: 24px;
+  line-height: 24px;
+}
 .hm-people
 {
   padding: 40px 0px 60px 0px;
@@ -349,8 +355,8 @@ padding-top: 40px;
   margin-left: 1px;
 }
 .people-num h2 {
-    font-size: 36px;
-  }
+  font-size: 36px;
+}
 .people-img
 {
   margin-top: 30px;
@@ -395,7 +401,7 @@ padding-top: 40px;
 }
 .footer-link.bd-none 
 {
-margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 .footSocial
 {
@@ -406,11 +412,11 @@ margin-bottom: 0px;
   display: block;
 }
 .policyLinks ul {
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 .copyrightTxt p
 {
-padding-bottom: 15px;
+  padding-bottom: 15px;
 }
 .rdxDev p
 {
