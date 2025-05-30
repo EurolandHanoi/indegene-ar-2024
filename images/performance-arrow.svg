@@ -1,0 +1,35 @@
+<svg id="Group_62415" data-name="Group 62415" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="34.531" height="34.532" viewBox="0 0 34.531 34.532">
+  <defs>
+    <linearGradient id="linear-gradient" x1="-0.039" x2="0" y2="1.128" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#dd1b7a"/>
+      <stop offset="0.039" stop-color="#dd1b7a"/>
+      <stop offset="0.109" stop-color="#d71c7b"/>
+      <stop offset="0.194" stop-color="#c9207d"/>
+      <stop offset="0.286" stop-color="#b02682"/>
+      <stop offset="0.384" stop-color="#8e2e89"/>
+      <stop offset="0.486" stop-color="#623992"/>
+      <stop offset="0.513" stop-color="#2d479c"/>
+      <stop offset="0.533" stop-color="#174da1"/>
+      <stop offset="0.619" stop-color="#1459a9"/>
+      <stop offset="0.659" stop-color="#0d79c0"/>
+      <stop offset="0.735" stop-color="#03ade5"/>
+      <stop offset="1" stop-color="#00bef2"/>
+    </linearGradient>
+    <clipPath id="clip-path">
+      <path id="Path_21686" data-name="Path 21686" d="M1.352,1.353H33.18V33.18H1.352ZM0,34.533H34.532V0H0Z" transform="translate(0 -0.001)" fill="url(#linear-gradient)"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Path_21687" data-name="Path 21687" d="M41.01,43.079l-7.826-8.449-8.217,8.265-1.2-1.192,9.459-9.514L42.25,41.93Z" transform="translate(-23.769 -32.188)" fill="url(#linear-gradient)"/>
+    </clipPath>
+  </defs>
+  <g id="Group_62412" data-name="Group 62412">
+    <g id="Group_62411" data-name="Group 62411" clip-path="url(#clip-path)">
+      <rect id="Rectangle_72099" data-name="Rectangle 72099" width="34.532" height="34.532" transform="translate(0 0)" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+  <g id="Group_62414" data-name="Group 62414" transform="translate(8.036 10.882)">
+    <g id="Group_62413" data-name="Group 62413" clip-path="url(#clip-path-2)">
+      <rect id="Rectangle_72100" data-name="Rectangle 72100" width="20.776" height="20.762" transform="translate(-5.445 5.432) rotate(-44.93)" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+</svg>

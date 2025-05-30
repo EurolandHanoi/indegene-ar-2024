@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="22" height="22" viewBox="0 0 22 22">
+  <defs>
+    <clipPath id="clip-Artboard_1">
+      <rect width="22" height="22"/>
+    </clipPath>
+  </defs>
+  <g id="Artboard_1" data-name="Artboard – 1" clip-path="url(#clip-Artboard_1)">
+    <rect width="22" height="22" fill="#fff"/>
+    <g id="Group_62964" data-name="Group 62964" transform="translate(5830 1024.721)">
+      <g id="Group_62962" data-name="Group 62962" transform="translate(-5830 -1023.721)">
+        <rect id="Rectangle_72009" data-name="Rectangle 72009" width="3.525" height="3.523" transform="translate(0.009)"/>
+        <rect id="Rectangle_72010" data-name="Rectangle 72010" width="3.539" height="6.915" transform="translate(6.298 13.974)"/>
+        <rect id="Rectangle_72011" data-name="Rectangle 72011" width="3.539" height="15.653" transform="translate(0 5.232)"/>
+        <rect id="Rectangle_72012" data-name="Rectangle 72012" width="3.539" height="12.163" transform="translate(18.461 8.722)"/>
+        <rect id="Rectangle_72013" data-name="Rectangle 72013" width="3.539" height="3.535" transform="translate(18.461 5.186)"/>
+        <rect id="Rectangle_72014" data-name="Rectangle 72014" width="6.853" height="3.535" transform="translate(6.298 10.436)"/>
+        <rect id="Rectangle_72015" data-name="Rectangle 72015" width="12.163" height="3.535" transform="translate(6.298 5.186)"/>
+        <rect id="Rectangle_72016" data-name="Rectangle 72016" width="3.539" height="6.915" transform="translate(13.154 13.974)"/>
+        <rect id="Rectangle_72017" data-name="Rectangle 72017" width="3.539" height="3.535" transform="translate(13.154 10.436)"/>
+      </g>
+    </g>
+  </g>
+</svg>
