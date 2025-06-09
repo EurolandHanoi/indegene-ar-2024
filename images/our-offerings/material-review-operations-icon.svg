@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48" viewBox="0 0 48 48">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_72220" data-name="Rectangle 72220" width="48" height="48" transform="translate(8953 5483)" fill="#fff"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Path_21980" data-name="Path 21980" d="M0,9.157H31.459V-30.03H0Z" transform="translate(0 30.03)" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_13" data-name="Mask Group 13" transform="translate(-8953 -5483)" clip-path="url(#clip-path)">
+    <g id="Group_63520" data-name="Group 63520" transform="translate(8953 5522.03)">
+      <g id="Group_63185" data-name="Group 63185" transform="translate(0 -30.03)" clip-path="url(#clip-path-2)">
+        <g id="Group_63182" data-name="Group 63182" transform="translate(0 0.001)">
+          <path id="Path_21977" data-name="Path 21977" d="M6.738,5.933V-9.186H.8a4.266,4.266,0,0,1-4.24-4.28v-5.992H-17.857a4.26,4.26,0,0,0-4.241,4.28v29.1a4.261,4.261,0,0,0,4.241,4.28H-.9a8.522,8.522,0,0,1-8.49-8.551A8.521,8.521,0,0,1-.913,1.085,8.477,8.477,0,0,1,6.738,5.933" transform="translate(22.098 19.458)" fill="#0546a5"/>
+        </g>
+        <g id="Group_63183" data-name="Group 63183" transform="translate(20.598 0)">
+          <path id="Path_21978" data-name="Path 21978" d="M1.847,1.81-5.564-5.6a1.692,1.692,0,0,0-.492-.337V-.216A2.518,2.518,0,0,0-3.538,2.3H2.182a1.646,1.646,0,0,0-.335-.492" transform="translate(6.056 5.937)" fill="#0546a5"/>
+        </g>
+        <g id="Group_63184" data-name="Group 63184" transform="translate(14.393 22.121)">
+          <path id="Path_21979" data-name="Path 21979" d="M3.871,3.307.084-.488a6.864,6.864,0,0,0-2.422-9.4,6.866,6.866,0,0,0-9.4,2.421,6.867,6.867,0,0,0,2.422,9.4,6.868,6.868,0,0,0,6.981,0L1.457,5.721A1.707,1.707,0,0,0,3.871,3.307M-10.092-3.962a4.281,4.281,0,0,1,4.28-4.28,4.28,4.28,0,0,1,4.28,4.28A4.28,4.28,0,0,1-5.811.32a4.281,4.281,0,0,1-4.28-4.281" transform="translate(12.695 10.845)" fill="#0546a5"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

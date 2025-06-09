@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="51" height="48" viewBox="0 0 51 48">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_72215" data-name="Rectangle 72215" width="51" height="48" transform="translate(9428 4761)" fill="#fff"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Path_21946" data-name="Path 21946" d="M0,15.088H50.351V-27.965H0Z" transform="translate(0 27.965)" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_8" data-name="Mask Group 8" transform="translate(-9428 -4761)" clip-path="url(#clip-path)">
+    <g id="Group_63538" data-name="Group 63538" transform="translate(9428 4793.965)">
+      <g id="Group_63141" data-name="Group 63141" transform="translate(0 -27.965)" clip-path="url(#clip-path-2)">
+        <g id="Group_63136" data-name="Group 63136" transform="translate(28.459 18.973)">
+          <path id="Path_21941" data-name="Path 21941" d="M4.915,0V3.365C8.049,5.011,9.872,7.05,9.872,9.071,9.872,13.7,1,17.343-7.774,18.11A1.506,1.506,0,0,0-9.1,19.759a1.479,1.479,0,0,0,1.569,1.4C.1,20.5,12.782,17.034,12.782,9.071,12.782,4.722,8.733,1.73,4.915,0" transform="translate(9.109)" fill="#0546a5"/>
+        </g>
+        <g id="Group_63137" data-name="Group 63137" transform="translate(0 18.973)">
+          <path id="Path_21942" data-name="Path 21942" d="M5.627,4.47a1.436,1.436,0,0,0-2.454.736L2.531,8.262C-7.081,5.57-11.7-.215-2.562-4.962V-8.284c-11.985,5.376-10.1,15.474,4.472,19.5l-.577,2.748a1.473,1.473,0,0,0,1.958,1.723l7.259-3.019a1.539,1.539,0,0,0,.5-2.46Z" transform="translate(10.429 8.284)" fill="#0546a5"/>
+        </g>
+        <g id="Group_63138" data-name="Group 63138" transform="translate(12.405 0)">
+          <path id="Path_21943" data-name="Path 21943" d="M4.7.068A1.463,1.463,0,0,0,3.238.074L-8.715,7.034C-6.69,8.212,2.953,13.828,4.052,14.469L16.826,7Z" transform="translate(8.715 0.126)" fill="#0546a5"/>
+        </g>
+        <g id="Group_63139" data-name="Group 63139" transform="translate(10.946 9.487)">
+          <path id="Path_21944" data-name="Path 21944" d="M0,4.968A1.533,1.533,0,0,0,.716,6.279l11.69,7.134V-1.636L0-9.207Z" transform="translate(0 9.207)" fill="#0546a5"/>
+        </g>
+        <g id="Group_63140" data-name="Group 63140" transform="translate(26.999 9.487)">
+          <path id="Path_21945" data-name="Path 21945" d="M4.348,4.972V-9.216L-8.058-1.621V13.4L3.632,6.283a1.531,1.531,0,0,0,.716-1.31" transform="translate(8.058 9.216)" fill="#0546a5"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

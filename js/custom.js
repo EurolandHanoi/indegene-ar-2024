@@ -24,11 +24,11 @@ $(document).ready(function(){
     $(".my-sidenav").accordion();
 
     $('.new-navopen').hover(function() {
-       var id = $(this).attr('data');
+     var id = $(this).attr('data');
 
-       $(".newnavv").hide();
-       $(".nv"+id).show();
-   });
+     $(".newnavv").hide();
+     $(".nv"+id).show();
+ });
 
     $(".nv1").mouseleave(function(){
         $(this).hide();
@@ -62,17 +62,17 @@ $('.cross-btn1').click(function(){
 
 
 $('.panel-collapse').on('shown.bs.collapse', function (e) {
- var $panel = $(this).closest('.panel');
- $('html,body').animate({
-   scrollTop: $panel.offset().top-80
-}, 500); 
+   var $panel = $(this).closest('.panel');
+   $('html,body').animate({
+     scrollTop: $panel.offset().top-80
+ }, 500); 
 });
 
 $('.accordion-collapse').on('shown.bs.collapse', function (e) {
-   var $panel = $(this).closest('.accordion-item');
-   $('html,body').animate({
-     scrollTop: $panel.offset().top-80
- }, 1000); 
+ var $panel = $(this).closest('.accordion-item');
+ $('html,body').animate({
+   scrollTop: $panel.offset().top-80
+}, 1000); 
 
 });
 
@@ -130,50 +130,125 @@ function collectMapSvg() {
 // });
 
 $(".banner-slider.owl-carousel").owlCarousel({
- autoplay: false,
- loop: false,
- dots:false,   
- nav: true,
- navText:"",
- touchDrag: true,
- mouseDrag: false,
- smartSpeed: 2000,
- animateIn: 'fadeIn',
- animateOut: 'fadeOut',
- responsive: {
-   0: {
-     items: 1
- },
- 600: {
-     items: 1
- },
- 1000: {
+   autoplay: false,
+   loop: false,
+   dots:false,   
+   nav: true,
+   navText:"",
+   touchDrag: true,
+   mouseDrag: false,
+   smartSpeed: 2000,
+   animateIn: 'fadeIn',
+   animateOut: 'fadeOut',
+   responsive: {
+     0: {
+       items: 1
+   },
+   600: {
+       items: 1
+   },
+   1000: {
     items:1
 }
 } 
 });
 
 
+
+
 $(".people-slider.owl-carousel").owlCarousel({
- autoplay: true,
- loop:true,
- dots:true,   
- nav: false,
- navText:"",
- touchDrag: true,
- mouseDrag: false,
- smartSpeed: 1000,
- autoplayTimeout:8000, 
- margin:15,
- responsive: {
-   0: {
-     items: 1
- },
- 600: {
-     items: 1
- },
- 1000: {
+   autoplay: true,
+   loop:true,
+   dots:true,   
+   nav: false,
+   navText:"",
+   touchDrag: true,
+   mouseDrag: false,
+   smartSpeed: 1000,
+   autoplayTimeout:8000, 
+   margin:15,
+   responsive: {
+     0: {
+       items: 1
+   },
+   600: {
+       items: 1
+   },
+   1000: {
     items:1
 }
 } 
+});
+
+$(document).ready(function () {
+    var sync1 = $("#sync1");
+    var sync2 = $("#sync2");
+    var slidesPerPage = 22;
+    var syncedSecondary = true;
+
+    sync1.owlCarousel({
+        items: 3,
+        slideSpeed: 1000,
+        nav: false,
+        autoplay: false,
+        dots: false,
+        loop: false,
+        margin:50,
+        responsiveRefreshRate: 200,
+        responsive: {
+            0: { items: 1 },
+            576: { items: 4 },
+            768: { items: 5 },
+            992: { items: 6 },
+            1200: { items: 3 }
+        }
+    }).on('changed.owl.carousel', syncPosition);
+
+    sync2.owlCarousel({
+        items: slidesPerPage,
+        dots: false,
+        nav: false,
+        smartSpeed: 200,
+        slideSpeed: 500,
+        margin: 0,
+        responsiveRefreshRate: 100,
+        responsive: {
+            0: { items: 6 },
+            576: { items: 4 },
+            768: { items: 5 },
+            992: { items: 6 },
+            1200: { items: 22 }
+        }
+    }).on('changed.owl.carousel', syncPosition2);
+
+    function syncPosition(el) {
+        let current = el.item.index;
+        sync2.find(".owl-item").removeClass("current").eq(current).addClass("current");
+        let onscreen = sync2.find('.owl-item.active').length;
+        let start = sync2.find('.owl-item.active').first().index();
+        let end = sync2.find('.owl-item.active').last().index();
+
+        if (current > end) {
+            sync2.trigger('to.owl.carousel', [current, 100, true]);
+        }
+        if (current < start) {
+            sync2.trigger('to.owl.carousel', [current - onscreen + 1, 100, true]);
+        }
+    }
+
+    function syncPosition2(el) {
+        if (syncedSecondary) {
+            var number = el.item.index;
+            sync1.trigger("to.owl.carousel", [number, 100, true]);
+        }
+    }
+
+    sync2.on("click", ".owl-item", function (e) {
+        e.preventDefault();
+        var index = $(this).index();
+        sync1.trigger("to.owl.carousel", [index, 300, true]);
+    });
+
+        // Set default active item
+    sync2.find(".owl-item").eq(0).addClass("current");
 });

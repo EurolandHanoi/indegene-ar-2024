@@ -1,10 +1,62 @@
+<?php
+// === Search Logic + Pagination ===
+
+$searchTerm = isset($_GET['q']) ? strtolower(trim($_GET['q'])) : '';
+$resultsPerPage = 5; // Change results per page here
+$page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+$results = [];
+
+function highlightTerms($text, $term) {
+	return preg_replace("/(" . preg_quote($term, '/') . ")/i", "<mark>$1</mark>", $text);
+}
+
+// Search HTML files
+$htmlFiles = glob("*.html");
+
+foreach ($htmlFiles as $file) {
+	$content = file_get_contents($file);
+	$text = strip_tags($content);
+	if ($searchTerm !== '' && stripos($text, $searchTerm) !== false) {
+		preg_match("/<p[^>]*>.*?" . preg_quote($searchTerm, '/') . ".*?<\/p>/i", $content, $matches);
+		$snippet = isset($matches[0]) ? strip_tags($matches[0]) : substr($text, stripos($text, $searchTerm), 200);
+		$results[] = [
+			'type' => 'html',
+			'title' => ucfirst(basename($file, ".html")),
+			'url' => $file,
+			'snippet' => highlightTerms($snippet, $searchTerm)
+		];
+	}
+}
+
+// Search PDF filenames
+$pdfFiles = glob("pdf-files/*.pdf");
+
+foreach ($pdfFiles as $file) {
+	$filename = basename($file);
+	if ($searchTerm !== '' && stripos($filename, $searchTerm) !== false) {
+		$results[] = [
+			'type' => 'pdf',
+			'title' => $filename,
+			'url' => $file,
+			'snippet' => 'Matching PDF file: ' . highlightTerms($filename, $searchTerm)
+		];
+	}
+}
+
+// Pagination calculations
+$totalResults = count($results);
+$totalPages = ceil($totalResults / $resultsPerPage);
+$page = min($page, $totalPages > 0 ? $totalPages : 1);
+$startIndex = ($page - 1) * $resultsPerPage;
+$resultsForPage = array_slice($results, $startIndex, $resultsPerPage);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Message from the Chairman and CEO</title>
+	<title>Board of Directors</title>
 	<link rel="icon" href="images/favicon.svg" type="image/gif" sizes="32x32">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
@@ -14,9 +66,129 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="css/style.css" type="text/css" rel="stylesheet">
 	<link href="css/responsive.css" type="text/css" rel="stylesheet">
+	<style>
+/* Container for search results */
+.search-results {
+	max-width: 720px;
+	margin: 0 auto 3rem;
+	font-family: Arial, sans-serif;
+	color: #202124;
+	line-height: 1.4;
+}
 
+/* Each individual result */
+.result {
+	margin-bottom: 2.5rem;
+}
+
+/* The link (title) */
+.result a {
+	font-size: 18px;
+	color: #1a0dab;
+	text-decoration: none;
+	line-height: 1.3;
+	display: inline-block;
+	max-width: 100%;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	word-break: break-word;
+}
+
+.result a:hover {
+	text-decoration: underline;
+}
+
+/* The URL display */
+.result .url {
+	font-size: 14px;
+	color: #006621;
+	margin-bottom: 4px;
+	display: block;
+	word-break: break-all;
+}
+
+/* The snippet text */
+.result p.snippet {
+	font-size: 14px;
+	color: #4d5156;
+	margin-top: 0;
+	margin-bottom: 6px;
+}
+
+/* PDF download link styling */
+.result a.pdf-download {
+	font-size: 13px;
+	color: #c5221f;
+	text-decoration: none;
+	font-weight: 600;
+	border: 1px solid #c5221f;
+	padding: 3px 8px;
+	border-radius: 3px;
+	display: inline-block;
+	transition: background-color 0.3s ease;
+}
+
+.result a.pdf-download:hover {
+	background-color: #c5221f;
+	color: white;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+	.search-results {
+		padding: 0 1rem;
+	}
+}
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 20px;
+	gap: 8px;
+	flex-wrap: wrap;
+	font-family: Arial, sans-serif;
+}
+
+.pagination button {
+	border: 1px solid #dadce0;
+	background: white;
+	color: #1a0dab;
+	padding: 6px 12px;
+	cursor: pointer;
+	font-size: 14px;
+	border-radius: 4px;
+	min-width: 36px;
+	text-align: center;
+	transition: background-color 0.3s ease;
+}
+
+.pagination button:hover:not(.disabled):not(.active) {
+	background-color: #f8f9fa;
+}
+
+.pagination button.disabled {
+	color: #9aa0a6;
+	cursor: default;
+	border-color: #f1f3f4;
+}
+
+.pagination button.active {
+	background-color: #1a73e8;
+	color: white;
+	border-color: #1a73e8;
+	cursor: default;
+	font-weight: 600;
+}
+
+.pagination span {
+	padding: 6px 10px;
+	user-select: none;
+	color: #5f6368;
+}
+
+</style>
 </head>
-<body class="homePage">	
+<body class="homePage searchBg">	
 	<header id="header">
 		<div class="container">
 			<div class="row">
@@ -203,207 +375,53 @@
 	</ul>
 </div>
 <div id="wrapper">		
-	<section class="insideBanner">
+	<section class="insideBanner fullHeads">
 		<div class="container">
 			<div class="row">
-				<div class="col-xl-6">
-					<div class="siteMap">
+				<div class="col-xl-12">
+					<div class="siteMap gapR">
 						<a href="">Home / </a>
-						<a href="">Strategic Overview /</a>
-						<a href="">Message from the Chairman and CEO</a>
+						<a href="">Search</a>
 					</div>
-					<div class="insBanTxt">
-						<h3 class="wow fadeInUp">Message from the Chairman and CEO</h3>
-						<h5 class="wow fadeInUp">Dear Stakeholders,</h5>
-						<p class="wow fadeInUp">As FY 2024-25 gets closed, I am filled with a
-							sense of satisfaction, deep gratitude, and true
-						excitement for the years ahead.</p>
-						<p class="wow fadeInUp">It is immensely satisfying for me to see us stay
-							true to our core purpose of combining medical
-							expertise and technology for solving real
-							healthcare challenges for our customers
-							worldwide. Building in the process a truly
-							differentiated company that resolutely remains
-							focused on this core purpose, while nurturing a
-						culture that is uniquely ours.</p>
-					</div>
+
 				</div>
-				<div class="col-xl-6">
-					<div class="insBnrImg">
-						<img src="images/chairman-img-ins.webp" class="img-fluid wow zoomIn">
-					</div>
-				</div>
+
 			</div>
 		</div>
 	</section>
 
-	<section class="insidePage">
-		<div class="container">
-			<div class="row">
-				<div class="col-xl-12">
-					
-					<p class="wow fadeInUp">I am grateful, very deeply so, for the
-						continuing trust of our customers and
-						partners, who have helped us trace 25+
-						years of being purposeful for the life
-						sciences industry. For sure, grateful to our
-						leadership and talent for what we together
-						continue to accomplish. To all of you as
-						well, your trust in us during the IPO last
-						year and beyond has been overwhelming,
-					cannot be grateful enough!</p>
-					<p class="wow fadeInUp">As we look to the next few years at an
-						industry in transformation, I see only
-						possibilities for us as a company, that
-						are truly exciting. We are committed to
-						unlocking greater value as we build the
-					company for the next 25 years.</p>
-					
-					<h4 class="wow fadeInUp">Robust growth</h4>
-					<p class="wow fadeInUp">FY 2024-25 was a year of strong performance and strategic
-						progress. We achieved ₹ 28,393 million in revenue (+9.6%
-						YoY), / US$ 335.7 million. Our EBITDA stood at ₹5,622
-						million, and PAT grew by 20.8%, reaching ₹ 4,067 million.
-						We announced our maiden dividend while continuing our
-						relentless focus on finding value-accretive acquisitions,
-						reflecting our commitment to prudent capital allocation. These
-						numbers are not just milestones – these are a testament to
-						the strong demand for our deep expertise-led, life sciences
-						contextualized offerings and to our talented team that is
-						bringing these offerings/solutions to life.
-						Overall, we clocked consistent growth across business
-						segments. Our established businesses – Enterprise
-						Commercial Solutions and Enterprise Medical Solutions, grew
-						by 12.2% to ₹ 23,896 million or 84.2% of revenues. Our
-						Omnichannel Activation Solutions segment also contributed
-						to the overall growth, growing at 9.0% and reaching ₹ 3,477
-						million in FY 2024-25. This balanced growth across our key
-						segments demonstrates the strength, as well as the breadth
-					and depth of our offerings.</p>
-					
+	<body>
+		<section class="insidePage">
+			<div class="searchSec">
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-12">
+							<h1>Search Results for "<?= htmlspecialchars($searchTerm) ?>"</h1>
 
-					<h4 class="wow fadeInUp">Real Impact</h4>
-					<p class="wow fadeInUp">Beyond the financials, what excites me the most is the
-						impact we’ve had on our clients. Whether it be increasing
-						patient intake by 30%, optimizing costs by 25%, or boosting
-						campaign engagement by 25%, our AI-driven solutions
-						have delivered tangible results to several top pharma
-						companies across different functional areas, around the
-						world. As just one example, for a global pharma giant, our
-						omnichannel strategies increased brand sales by 10% while
-						reducing marketing spend by 20%. Success stories like this
-						are the real measure of our business impact, fueling the
-					purpose and passion that drive us as a company.</p>
+							<?php if (empty($resultsForPage)): ?>
+								<p>No results found.</p>
+							<?php else: ?>
+								<?php foreach ($resultsForPage as $res): ?>
+									<div class="result">
+										<a href="<?= $res['url'] ?>" target="_blank" rel="noopener noreferrer">
+											<?= htmlspecialchars($res['title']) ?>
+										</a>
+										<p>
+											<?= $res['snippet'] ?>
+										</p>
+										<?php if ($res['type'] == 'pdf'): ?>
+											<a class="pdf-download" href="<?= $res['url'] ?>" download>Download PDF</a>
+										<?php endif; ?>
+									</div>
+								<?php endforeach; ?>
+							<?php endif; ?>
 
-
-					<h4 class="wow fadeInUp">Nuanced, AI-led Future</h4>
-					<p class="wow fadeInUp">The life sciences industry is steadily embracing AI with an
-						expected mix of curiosity and caution – and rightly so, given
-						the nature of the industry. As AI reshapes drug discovery,
-						clinical trials, and commercialization, the pace of change is
-						only accelerating. But, with all the noise surrounding AI in
-						life sciences – we see clients seeking clarity. As they sift
-						through the noise, we see them switching from generic
-						AI solutions to those that bring in deep expertise-led
-						contextualization for specific use cases. Simply put, they
-						are turning to specialized service providers who can help
-						them tune out the noise and tune into a more nuanced AI
-					approach that will deliver real, measurable value.</p>
-
-					<h4 class="wow fadeInUp">Expertise-embedded Cortex</h4>
-					<p class="wow fadeInUp">We doubled down on digital much before it became
-						fashionable, and it has held us in good stead. We are now
-						doubling down on leveraging AI in all its avatars, including
-						GenAI, to deliver transformational value for our clients.
-						We continue to remain focused on delivering practical AI
-						solutions that are rooted in real-world experience. In line
-						with this, we are dialing up our investments in GenAI.
-						Cortex, our flagship GenAI platform purpose-built for the life sciences industry, is pivotal to our AI-first approach.
-						By embedding 25+ years of operational expertise into AI
-						workflows, Cortex helps clients achieve real-world results
-						while ensuring regulatory compliance and governance. To
-						take advantage of everything GenAI has to offer, our entire
-						talent is being trained in GenAI, helping them be future-
-					ready via our ‘GenAI @ Work’ initiative.</p>
-
-					<h4 class="wow fadeInUp">Specialization-seeking Industry</h4>
-					<p class="wow fadeInUp">The industry is at an inflection point. Our clients are
-						navigating headwinds of patent cliffs, pricing pressures,
-						evolving regulatory landscapes etc. Amidst an increasingly
-						complex healthcare landscape, with ~70 new drugs expected
-						to be launched over the next 1-2 years, launch success
-					remains top priority for pharmaceutical companies.</p>
-					<p class="wow fadeInUp">However, traditional go-to-market models are proving to
-						be less effective due to evolving preferences of HCPs, who
-						increasingly favor a hybrid approach. The integration of
-						digital marketing channels with traditional sales approaches
-						is becoming crucial for enhancing reach and effectiveness.
-						Amidst all this, the need to streamline processes, improve
-					efficiency, and personalize patient care remain constant.</p>
-					<p class="wow fadeInUp">As a result, more and more life sciences companies are
-						increasingly turning to specialized service providers like
-					Indegene, to help them navigate this new market dynamic.</p>
-
-					<h4 class="wow fadeInUp">Sustainability and Community</h4>
-					<p class="wow fadeInUp">Beyond business, we are proud of our progress on ESG.
-						Our efforts have earned us a Silver rating from EcoVadis,
-						placing Indegene amongst the top 15% (93<sup>rd</sup> percentile). Our
-						strategic partnerships with reputed organizations such as
-						C-CAMP, IISc and Plaksha University reflect our commitment
-						to give back to the community, accelerate deep-science
-					innovation and strengthen India’s healthcare ecosystem.</p>
-
-					<h4 class="wow fadeInUp">Profitable Growth</h4>
-					<p class="wow fadeInUp">As we look at FY 2025-26, our focus remains on sustaining
-						profitable growth, driving innovation, expanding our
-						footprint, and deepening client relationships. We will
-						continue to build on our AI strengths and deep expertise in
-						life sciences commercialization, bringing new solutions to
-						address the evolving challenges in the healthcare ecosystem.
-					</p>
-					<p class="wow fadeInUp">With the support of our stakeholders, we will continue to push boundaries, unlock new opportunities, shaping the future of healthcare and delivering lasting value to our stakeholders. </p>
-					<p class="wow fadeInUp">Thank you for your unwavering trust, support,
-						and partnership. <br><br>Sincerely,</p>
-						<div class="signTxt">
-							<img src="images/img1.svg" class="wow zoomIn">
-							<h5 class="wow fadeInUp">Manish Gupta <span>Chairman and CEO Indegene</span></h5>
+							<div class="pagination" id="pagination"></div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-
-
-		<section class="perNextLinks">
-			<div class="container">
-				<div class="row">
-					<div class="col-xl-6">
-						<div class="preLinks">
-							<a href="">
-								<span>
-									<img class="wHover" src="images/left-arrow.svg">
-									<img class="aHover" src="images/white-arrow-left.svg">
-								</span>
-								Our Offerings
-							</a>
-						</div>
-					</div>
-					<div class="col-xl-6">
-						<div class="nexLinks">
-							<a href="">Performance Highlights
-								<span>
-									<img class="wHover" src="images/right-arrow.svg">
-									<img class="aHover" src="images/white-arrow-right.svg">
-								</span>
-							</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-
-
 
 		<footer>
 			<div class="footer-top">
@@ -485,6 +503,7 @@
 		});
 	});
 </script>
+
 <script>
 	jQuery(document).ready(function( $ ) {
 		$('.counter').counterUp({
@@ -513,6 +532,137 @@
 
 	});
 </script>
+<script>
+	$(document).ready(function(){
+		$('#tab_selector').on('change', function () {
+			const selectedIndex = $(this).val();
+			const tabTrigger = new bootstrap.Tab($('#myTab button').eq(selectedIndex)[0]);
+			tabTrigger.show();
+		});
+	});
 
+</script>
+
+
+<script>
+	const slider = document.getElementById('slider1');
+	const resizable = document.getElementById('resizable');
+	const container = document.getElementById('sliderContainer');
+
+	let isDragging = false;
+	let startX = 0;
+	let startY = 0;
+
+	const moveSlider = (x) => {
+		const rect = container.getBoundingClientRect();
+		let offsetX = x - rect.left;
+		offsetX = Math.max(0, Math.min(offsetX, rect.width));
+		const percent = (offsetX / rect.width) * 100;
+		slider.style.left = percent + '%';
+		resizable.style.width = percent + '%';
+	};
+
+// Desktop
+	slider.addEventListener('mousedown', (e) => {
+		isDragging = true;
+	});
+
+	window.addEventListener('mouseup', () => isDragging = false);
+
+	window.addEventListener('mousemove', (e) => {
+		if (!isDragging) return;
+		moveSlider(e.clientX);
+	});
+
+// Mobile
+	slider.addEventListener('touchstart', (e) => {
+		isDragging = true;
+		startX = e.touches[0].clientX;
+		startY = e.touches[0].clientY;
+	}, { passive: true });
+
+	window.addEventListener('touchend', () => isDragging = false);
+
+	window.addEventListener('touchmove', (e) => {
+		if (!isDragging) return;
+
+		const deltaX = e.touches[0].clientX - startX;
+		const deltaY = e.touches[0].clientY - startY;
+
+  // Only prevent default if horizontal drag is more significant than vertical
+		if (Math.abs(deltaX) > Math.abs(deltaY)) {
+			moveSlider(e.touches[0].clientX);
+    e.preventDefault(); // Prevent horizontal scroll only
+  }
+}, { passive: false });
+</script>
+<script>
+	const totalPages = <?= $totalPages ?>;
+	let currentPage = <?= $page ?>;
+
+	function renderPagination(totalPages, currentPage) {
+		const container = document.getElementById('pagination');
+		container.innerHTML = '';
+
+  if (totalPages <= 1) return; // No pagination if only one page
+
+  function createBtn(text, disabled = false, active = false, page = null) {
+  	const btn = document.createElement('button');
+  	btn.textContent = text;
+  	if (disabled) btn.classList.add('disabled');
+  	if (active) btn.classList.add('active');
+  	if (!disabled && !active && page !== null) {
+  		btn.addEventListener('click', () => {
+        // Reload page with q and page params
+  			const urlParams = new URLSearchParams(window.location.search);
+  			urlParams.set('page', page);
+  			window.location.search = urlParams.toString();
+  		});
+  	}
+  	return btn;
+  }
+
+  // Previous button
+  container.appendChild(createBtn('←', currentPage === 1, false, currentPage - 1));
+
+  // Show all pages if totalPages <= 7, else show current ±2 pages with first and last and dots
+  if (totalPages <= 7) {
+  	for(let i = 1; i <= totalPages; i++) {
+  		container.appendChild(createBtn(i, false, i === currentPage, i));
+  	}
+  } else {
+  	if (currentPage > 3) {
+  		container.appendChild(createBtn(1, false, false, 1));
+  		if (currentPage > 4) {
+  			const dots = document.createElement('span');
+  			dots.textContent = '...';
+  			dots.style.padding = '0 6px';
+  			container.appendChild(dots);
+  		}
+  	}
+  	let start = Math.max(2, currentPage - 2);
+  	let end = Math.min(totalPages - 1, currentPage + 2);
+
+  	for(let i = start; i <= end; i++) {
+  		container.appendChild(createBtn(i, false, i === currentPage, i));
+  	}
+
+  	if (currentPage < totalPages - 2) {
+  		if (currentPage < totalPages - 3) {
+  			const dots = document.createElement('span');
+  			dots.textContent = '...';
+  			dots.style.padding = '0 6px';
+  			container.appendChild(dots);
+  		}
+  		container.appendChild(createBtn(totalPages, false, false, totalPages));
+  	}
+  }
+
+  // Next button
+  container.appendChild(createBtn('→', currentPage === totalPages, false, currentPage + 1));
+}
+
+renderPagination(totalPages, currentPage);
+</script>
 </body>
 </html>

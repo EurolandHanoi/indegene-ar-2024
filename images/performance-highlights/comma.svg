@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="83.564" height="77.174" viewBox="0 0 83.564 77.174">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_72114" data-name="Rectangle 72114" width="57.591" height="77.174" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <rect id="Rectangle_72113" data-name="Rectangle 72113" width="57.591" height="77.176" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-3">
+      <rect id="Rectangle_72116" data-name="Rectangle 72116" width="51.046" height="63.247" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_63045" data-name="Group 63045" transform="translate(-573 -1310.885)">
+    <g id="Group_62997" data-name="Group 62997" transform="translate(573 1310.885)" opacity="0.25">
+      <g id="Group_62996" data-name="Group 62996">
+        <g id="Group_62995" data-name="Group 62995" clip-path="url(#clip-path)">
+          <g id="Group_62994" data-name="Group 62994" transform="translate(0 -0.002)">
+            <g id="Group_62993" data-name="Group 62993" clip-path="url(#clip-path-2)">
+              <path id="Path_21809" data-name="Path 21809" d="M25.029,41.516q1.456-12.241,12.823-24.774L26.779,8q-9.62,9.618-13.7,19.819A59.83,59.83,0,0,0,9,50.259V71.245H38.727V41.516Z" transform="translate(4.932 4.385)" fill="#00c0f3"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g id="Group_63002" data-name="Group 63002" transform="translate(605.518 1324.812)" opacity="0.25">
+      <g id="Group_63001" data-name="Group 63001">
+        <g id="Group_63000" data-name="Group 63000" clip-path="url(#clip-path-3)">
+          <g id="Group_62999" data-name="Group 62999">
+            <g id="Group_62998" data-name="Group 62998" clip-path="url(#clip-path-3)">
+              <path id="Path_21810" data-name="Path 21810" d="M42.507,43.133q1.135-9.546,10-19.317L43.871,17A46.627,46.627,0,0,0,33.19,32.452a46.663,46.663,0,0,0-3.183,17.5V66.314H53.188V43.133Z" transform="translate(-16.075 -4.613)" fill="#00c0f3"/>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

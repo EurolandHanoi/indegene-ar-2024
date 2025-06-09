@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="161.554" height="36.834" viewBox="0 0 161.554 36.834">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Path_22067" data-name="Path 22067" d="M10.354-18.431A34.865,34.865,0,0,0,2.376-6.89h0A34.857,34.857,0,0,0,0,6.182H0V18.4H17.313V1.09H9.337q.845-7.132,7.468-14.429h0Z" transform="translate(0 18.431)" fill="none"/>
+    </clipPath>
+    <linearGradient id="linear-gradient" y1="1" x2="0.107" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#35cbf5"/>
+      <stop offset="0.1" stop-color="#2fbfed"/>
+      <stop offset="0.2" stop-color="#29b1e4"/>
+      <stop offset="0.3" stop-color="#24a3db"/>
+      <stop offset="0.4" stop-color="#1e95d3"/>
+      <stop offset="0.5" stop-color="#1987cb"/>
+      <stop offset="0.6" stop-color="#1579c2"/>
+      <stop offset="0.7" stop-color="#106cbb"/>
+      <stop offset="0.8" stop-color="#0c5fb3"/>
+      <stop offset="0.9" stop-color="#0851ab"/>
+      <stop offset="1" stop-color="#0546a5"/>
+    </linearGradient>
+    <clipPath id="clip-path-2">
+      <path id="Path_22069" data-name="Path 22069" d="M11.33-5.371A27.213,27.213,0,0,0,9.477,4.821h0V14.35h13.5V.85H16.755Q17.418-4.71,22.579-10.4h0l-5.028-3.971a27.154,27.154,0,0,0-6.221,9" transform="translate(-9.477 14.372)" fill="none"/>
+    </clipPath>
+    <linearGradient id="linear-gradient-2" x1="0.117" x2="0.201" xlink:href="#linear-gradient"/>
+    <clipPath id="clip-path-3">
+      <path id="Path_22071" data-name="Path 22071" d="M0,18.4H161.554V-18.431H0Z" transform="translate(0 18.431)" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="Group_63629" data-name="Group 63629" transform="translate(-14333 -7051.028)">
+    <g id="Group_63627" data-name="Group 63627">
+      <g id="Group_63295" data-name="Group 63295" transform="translate(14333 7051.028)" clip-path="url(#clip-path)">
+        <g id="Group_63294" data-name="Group 63294" transform="translate(0 -0.001)">
+          <path id="Path_22066" data-name="Path 22066" d="M0-18.431H161.554V18.4H0Z" transform="translate(0 18.431)" fill="url(#linear-gradient)"/>
+        </g>
+      </g>
+      <g id="Group_63297" data-name="Group 63297" transform="translate(14351.939 7059.14)" clip-path="url(#clip-path-2)">
+        <g id="Group_63296" data-name="Group 63296" transform="translate(-18.94 -8.112)">
+          <path id="Path_22068" data-name="Path 22068" d="M-9.477-18.431H152.077V18.4H-9.477Z" transform="translate(9.477 18.431)" fill="url(#linear-gradient-2)"/>
+        </g>
+      </g>
+    </g>
+    <g id="Group_63628" data-name="Group 63628">
+      <g id="Group_63299" data-name="Group 63299" transform="translate(14333 7051.028)" clip-path="url(#clip-path-3)">
+        <g id="Group_63298" data-name="Group 63298" transform="translate(36.609 36.334)">
+          <path id="Path_22070" data-name="Path 22070" d="M0,0H124.945" fill="none" stroke="#707070" stroke-width="0.5"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
