@@ -203,7 +203,7 @@ $resultsForPage = array_slice($results, $startIndex, $resultsPerPage);
 					<div class="right-menu">
 						<h6>Annual Report FY 2024-25</h6>
 						<!-- Search Icon and Input -->
-						<form action="search.php" method="get" class="search-form">
+						<form action="search.html" method="get" class="search-form">
 							<div class="search-wrapper">
 								<img src="images/search-white.svg" class="search-icon" alt="Search" />
 								<input type="text" name="q" class="search-input" placeholder="Search..." />
